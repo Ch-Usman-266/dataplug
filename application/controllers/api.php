@@ -266,12 +266,23 @@ class Api extends CI_Controller {
             $prefrences['BackgroundUpdate']=($app_general_setting->background_update==1)?'YES':'NO';
             $prefrences['ForceUpdate']=($app_general_setting->force_update==1)?'YES':'NO';
             $prefrences['EnableAutoTime']=($app_general_setting->enable_auto_time==1)?'YES':'NO';
-            $prefrences['TrackingStatus']=($app_general_setting->tracking_status==1)?'YES':'NO';
-            $prefrences['TrackingInterval']=(isset($app_general_setting->tracking_interval))?$app_general_setting->tracking_interval:'5';
-            $prefrences['TrackingDistance']=(isset($app_general_setting->tracking_distance))?$app_general_setting->tracking_distance:'100';
-            $prefrences['DebugTracking']=(isset($app_general_setting->debug_tracking) && $app_general_setting->debug_tracking == 1)?'YES':'NO';
-            $prefrences['hasGeoFencing']=(isset($app_general_setting->has_geo_fencing) && $app_general_setting->has_geo_fencing == 1)?'YES':'NO';
-            $prefrences['DebugGeoFencing']=(isset($app_general_setting->debug_geo_fencing) && $app_general_setting->debug_geo_fencing == 1)?'YES':'NO';
+            $temp = ($app_general_setting->tracking_status==1)?'YES':'NO';
+            $prefrences['TrackingStatus']= $temp;
+            $vartemp = $app_general_setting->tracking_interval:'5';
+            $temp = (isset($app_general_setting->tracking_interval))?$vartemp;
+            $prefrences['TrackingInterval']= $temp;
+            $vartemp = $app_general_setting->tracking_distance:'100';
+            $temp = (isset($app_general_setting->tracking_distance))?$vartemp;
+            $prefrences['TrackingDistance']= $temp
+            $vartemp = $app_general_setting->debug_tracking == 1;
+            $temp = (isset($app_general_setting->debug_tracking) && $vartemp)?'YES':'NO';
+            $prefrences['DebugTracking']= $temp;
+            $vartemp =$app_general_setting->has_geo_fencing == 1;
+            $temp = (isset($app_general_setting->has_geo_fencing) && $vartemp )?'YES':'NO';
+            $prefrences['hasGeoFencing']= $temp;
+            $vartemp = $app_general_setting->debug_geo_fencing == 1;
+            $temp = (isset($app_general_setting->debug_geo_fencing) && $vartemp )?'YES':'NO';
+            $prefrences['DebugGeoFencing']= $temp;
             //Get geoFence from App user table
             $prefrences['geoFence']="[{'lng':74.33375,'lat':31.50282},{'lng':72.32271,'lat':31.49976},{'lng':74.3286,'lat':31.48541},{'lng':74.3474,'lat':30.48577},{'lng':74.33764,'lat':34.5049}]";
             
