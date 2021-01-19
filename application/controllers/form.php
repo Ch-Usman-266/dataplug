@@ -646,18 +646,21 @@ class Form extends CI_Controller {
 //                $selected_form = $this->form_model->get_form($form_id);
 //
 //                $app_id = $selected_form['app_id'];
-//                $changed_filter_form_id = $this->get_form_filter_based($app_id, $changed_category);
+//                $tmp_arg = $app_id;
+//                $tmp_arg_1 = $changed_category;
+//$changed_filter_form_id = $this->get_form_filter_based($tmp_arg, $tmp_arg_1);
 
                 $posted_array_filter = array();
                 $data_per_filter = array();
 
                 $posted_filters = array();
                 $filter_options = '';
-//                $filter_result = get_result_view_settings($selected_form['app_id']);
+//                $tmp_var = get_result_view_settings($selected_form['app_id']);
+//                $filter_result = $tmp_var;
 //                if (isset($filter_result->filters->$form_id)) {
 //                    $app_filter_list = $filter_result->filters->$form_id;
-//
-//                    $filter_options .= "<option value=''>Select One</option>";
+//                    $temp_choice = "<option value=''>Select One</option>";
+//                    $filter_options .= $temp_choice; 
 //                    if (!empty($app_filter_list)) {
 //
 //                        foreach ($app_filter_list as $key => $val) {
@@ -667,7 +670,8 @@ class Form extends CI_Controller {
 //                            } else {
 //                                $selected = '';
 //                            }
-//                            $filter_options .= "<option $selected value='$val'>$print_val</option>";
+//                            $temp_choice ="<option $selected value='$val'>$print_val</option>";
+//                            $filter_options .= $temp_choice;
 //                        }
 //                    }
 //                }
@@ -679,7 +683,9 @@ class Form extends CI_Controller {
 //                            $final = array();
 //                            if (!empty($datum)) {
 //                                foreach ($datum as $inside) {
-//                                    $final = array_merge($final, array($inside => $inside));
+//                                    $temp_arg = array($inside => $inside);    
+//                                    $temp_var = array_merge($final, $temp_arg );    
+//                                    $final = $temp_var;
 //                                }
 //                            }
 //                        }
@@ -696,7 +702,10 @@ class Form extends CI_Controller {
                 $data['search_text'] = $search_text;
                 if ($search_text) {
                     $search_text = mysql_real_escape_string($search_text);
-                    $search_text = str_replace(array('~', '<', '>', '$', '%', '|', '^', '*'), array(' '), $search_text);
+                    $temp_var = array('~', '<', '>', '$', '%', '|', '^', '*');
+                    $temp_var_2 =array(' ') ;
+                    $temp_var_3 = str_replace($temp_var, $temp_var_2, $search_text);
+                    $search_text = $temp_var_3;
                     $search_text = str_replace('/', '\\\\/', $search_text);
                     $search_text = trim($search_text);
                 }
